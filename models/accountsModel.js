@@ -16,6 +16,11 @@ const read_all_accounts = async () => {
 	}
 }
 
+const create_account = (name) => {
+	db.query(`INSERT INTO accounts (name, registered_date) VALUES(?, now())`, [name]);
+	return
+}
+
 //const update_accounts = async (new_account_info, acc_id) => {
 //	const name = new_account_info.name;
 //	const number = new_account_info.number;
@@ -35,8 +40,8 @@ const read_all_accounts = async () => {
 //}
 
 module.exports = {
-//	create_accounts,	//create
-	read_all_accounts,		//read
+	create_account,		//create
+	read_all_accounts,	//read
 //	update_accounts,	//update
 //	delete_accounts,	//delete
 };
