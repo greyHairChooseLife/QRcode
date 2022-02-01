@@ -21,6 +21,11 @@ const create_account = (name) => {
 	return
 }
 
+const update_account = (new_name, target) => {
+	db.query(`UPDATE accounts SET name='${new_name}' WHERE id=${++target}`);
+	return
+}
+
 //const update_accounts = async (new_account_info, acc_id) => {
 //	const name = new_account_info.name;
 //	const number = new_account_info.number;
@@ -42,6 +47,6 @@ const create_account = (name) => {
 module.exports = {
 	create_account,		//create
 	read_all_accounts,	//read
-//	update_accounts,	//update
+	update_account,		//update
 //	delete_accounts,	//delete
 };

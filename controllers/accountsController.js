@@ -12,7 +12,15 @@ const create_account = (req, res) => {
 	return res.json(result);
 }
 
+const update_account = (req, res) => {
+	const {new_name, target} = req.body;
+	const result = accountsModel.update_account(new_name, target);
+
+	return res.json(result);
+}
+
 module.exports = {
 	read_all_accounts,
 	create_account,
+	update_account,
 }
