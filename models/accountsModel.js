@@ -22,7 +22,12 @@ const create_account = (name) => {
 }
 
 const update_account = (new_name, target) => {
-	db.query(`UPDATE accounts SET name='${new_name}' WHERE id=${++target}`);
+	db.query(`UPDATE accounts SET name='${new_name}' WHERE id=${target}`);
+	return
+}
+
+const delete_account = (target) => {
+	db.query(`DELETE from accounts WHERE id=${target}`);
 	return
 }
 
@@ -48,5 +53,5 @@ module.exports = {
 	create_account,		//create
 	read_all_accounts,	//read
 	update_account,		//update
-//	delete_accounts,	//delete
+	delete_account,		//delete
 };

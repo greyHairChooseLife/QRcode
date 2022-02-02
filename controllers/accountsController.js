@@ -19,8 +19,16 @@ const update_account = (req, res) => {
 	return res.json(result);
 }
 
+const delete_account = (req, res) => {
+	const { target } = req.body;
+	const result = accountsModel.delete_account(target);
+
+	return res.json(result);
+}
+
 module.exports = {
-	read_all_accounts,
 	create_account,
+	read_all_accounts,
 	update_account,
+	delete_account,
 }
