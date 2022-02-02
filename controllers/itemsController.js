@@ -7,6 +7,14 @@ const read_all_items = async (req, res) => {
 	return res.json(items);
 }
 
+const control_item = async (req, res) => {
+	const items = await itemsModel.control_item(req.query.account_id);
+	console.log('model_result: ', items);
+
+	return res.json(items);
+}
+
 module.exports = {
 	read_all_items,
+	control_item,
 }
