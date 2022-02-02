@@ -23,6 +23,25 @@ const control_item = async (account_id) => {
 	}
 }
 
+const create_item = async (account_id, item) => {
+	console.log('xxxx: ', item);
+	const [result] = await db.query(`INSERT INTO items (code, name, registered_date, purchase_cost, account_id, size) VALUES(?,?,now(),?,?,?)`, [item.code, item.name, item.purchase_cost, account_id, item.size]);
+	if(result == undefined){
+		return null;
+	}else{
+		return result;
+	}
+}
+
+const update_item = async (account_id, item) => {
+//	const [result] = await db.query(`UPDATE items SET (name, registered_date, purchase_cost, size FROM items WHERE account_id=?`, [account_id]);
+//	if(result == undefined){
+//		return null;
+//	}else{
+//		return result;
+//	}
+}
+
 //const update_accounts = async (new_account_info, acc_id) => {
 //	const name = new_account_info.name;
 //	const number = new_account_info.number;
@@ -42,9 +61,9 @@ const control_item = async (account_id) => {
 //}
 
 module.exports = {
-//	create_accounts,	//create
-	read_all_items,		//read
-	control_item,		//read by account_id to control items
-//	update_accounts,	//update
+	read_all_items,		//read every items.
+	control_item,		//read by account_id to control items.
+	create_item,		//create with xlsx parse if there is no legacy.
+	update_item,		//update with xlsx parse if there is a legacy.
 //	delete_accounts,	//delete
 };

@@ -14,7 +14,24 @@ const control_item = async (req, res) => {
 	return res.json(items);
 }
 
+const create_item = async (req, res) => {
+	console.log('xxxxxx: ', req.body.item);
+	const items = await itemsModel.create_item(req.query.account_id, req.body.item);
+	console.log('model_result: ', items);
+
+	return res.json(items);
+}
+
+const update_item = async (req, res) => {
+	const items = await itemsModel.update_item(req.query.account_id, req.body.item);
+	console.log('model_result: ', items);
+
+	return res.json(items);
+}
+
 module.exports = {
 	read_all_items,
 	control_item,
+	create_item,
+	update_item,
 }
