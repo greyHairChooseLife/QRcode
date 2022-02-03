@@ -24,7 +24,6 @@ const control_item = async (account_id) => {
 }
 
 const create_item = async (account_id, item) => {
-	console.log('xxxx: ', item);
 	const [result] = await db.query(`INSERT INTO items (code, name, registered_date, purchase_cost, account_id, size) VALUES(?,?,now(),?,?,?)`, [item.code, item.name, item.purchase_cost, account_id, item.size]);
 	if(result == undefined){
 		return null;

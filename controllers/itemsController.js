@@ -15,11 +15,14 @@ const control_item = async (req, res) => {
 }
 
 const create_item = async (req, res) => {
-	console.log('xxxxxx: ', req.body.item);
-	const items = await itemsModel.create_item(req.query.account_id, req.body.item);
-	console.log('model_result: ', items);
+	const items = req.body.item;
+	const result = [];
+	for(var i=0; i<items.length; i++){
+		let create_result = await itemsModel.create_item(req.query.account_id, items[i]);
+		result.push(create_result);
+	}
 
-	return res.json(items);
+	return res.json(result);
 }
 
 const update_item = async (req, res) => {
