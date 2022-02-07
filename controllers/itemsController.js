@@ -32,9 +32,17 @@ const update_item = async (req, res) => {
 	return res.json(items);
 }
 
+const delete_item = async (req, res) => {
+	const items = await itemsModel.delete_item(req.query.account_id, req.body.item);
+	console.log('model_result: ', items);
+
+	return res.json(items);
+}
+
 module.exports = {
 	read_all_items,
 	control_item,
 	create_item,
 	update_item,
+	delete_item,
 }

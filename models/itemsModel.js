@@ -51,18 +51,17 @@ const update_item = async (account_id, item) => {
 //	await db.query(`UPDATE accounts SET name='${name}', number='${number}', email='${email}', address='${address}', website='${website}' WHERE id=?`, [acc_id]);
 //	return;
 //}
-//const delete_accounts = async (account_info) => {
-//
-//	//매칭되는 items 데이터 있는 경우엔 삭제 불가능하도록
-//
-//	await db.query(`DELETE from accounts WHERE id=?`, [account_info.acc_id]);
-//	return;
-//}
+const delete_item = async (account_info) => {
+
+	await db.query(`DELETE from accounts WHERE id=?`, [account_info.acc_id]);
+	return;
+}
 
 module.exports = {
 	read_all_items,		//read every items.
 	control_item,		//read by account_id to control items.
 	create_item,		//create with xlsx parse if there is no legacy.
 	update_item,		//update with xlsx parse if there is a legacy.
+	delete_item,		//delete with xlsx parse if there is a request.
 //	delete_accounts,	//delete
 };
