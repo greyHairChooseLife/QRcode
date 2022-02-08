@@ -33,12 +33,12 @@ const create_item = async (account_id, item) => {
 }
 
 const update_item = async (account_id, item) => {
-//	const [result] = await db.query(`UPDATE items SET (name, registered_date, purchase_cost, size FROM items WHERE account_id=?`, [account_id]);
-//	if(result == undefined){
-//		return null;
-//	}else{
-//		return result;
-//	}
+	const [result] = await db.query(`UPDATE items SET name='${item.name}', registered_date=now(), purchase_cost=${item.purchase_cost}, size='${item.size}' WHERE account_id=? AND code=?`, [account_id, item.code]);
+	if(result == undefined){
+		return null;
+	}else{
+		return result;
+	}
 }
 
 //const update_accounts = async (new_account_info, acc_id) => {

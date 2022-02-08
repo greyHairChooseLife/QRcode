@@ -2,14 +2,12 @@ const itemsModel = require('../models/itemsModel.js');
 
 const read_all_items = async (req, res) => {
 	const items = await itemsModel.read_all_items();
-	console.log('model_result: ', items);
 
 	return res.json(items);
 }
 
 const control_item = async (req, res) => {
 	const items = await itemsModel.control_item(req.query.account_id);
-	console.log('model_result: ', items);
 
 	return res.json(items);
 }
@@ -26,10 +24,13 @@ const create_item = async (req, res) => {
 }
 
 const update_item = async (req, res) => {
-	const items = await itemsModel.update_item(req.query.account_id, req.body.item);
-	console.log('model_result: ', items);
-
-	return res.json(items);
+	const items = req.body.item;
+	const result = [];
+	for(var i=0; i<items.length; i++){
+		let update_result = await itemsModel.update_item(req.query.account_id, items[i]);
+		result.push(update_result);
+	}
+	return res.json(result);
 }
 
 const delete_item = async (req, res) => {
