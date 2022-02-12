@@ -12,14 +12,10 @@ app.use(cors());
 
 const accountsRouter = require('./routers/accountsRouter.js');
 const itemsRouter = require('./routers/itemsRouter.js');
-//const adminRouter = require('./routers/adminRouter.js');
-//const clientRouter = require('./routers/clientRouter.js');
-//
-//app.use('/', homeRouter);
-//app.use('/admin', adminRouter);
-//app.use('/client', clientRouter);
+const customerRouter = require('./routers/customerRouter.js');
 app.use('/accounts', accountsRouter);
 app.use('/items', itemsRouter);
+app.use('/customer', customerRouter);
 
 app.get('/', (req,res) => {
 	return res.redirect('/scatter');
