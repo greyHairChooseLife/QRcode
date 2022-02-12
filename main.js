@@ -6,8 +6,8 @@ const cors = require('cors');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//app.set('view engine', 'ejs');
-//app.use(express.static('./front'));
+app.set('view engine', 'ejs');
+app.use(express.static('./front'));
 app.use(cors());
 
 const accountsRouter = require('./routers/accountsRouter.js');
