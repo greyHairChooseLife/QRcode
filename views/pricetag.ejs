@@ -9,7 +9,31 @@
 	<div id="name">품명: <%= name %></div>
 	<div id="size">규격: <%= size %></div>
 	<div id="cart">장바구니 담기</div>
-	<div id="test"></div>
+	<div id="test">
+	<% if(customerId === null){ %>
+		<div id="noCookie">
+			<form id="noCookieForm" action="http://localhost:5000/customer/basket" method="post">
+				<input type="text" name="createCustomerId" placeholder="mobile" />
+				<input type="hidden" name="item_code" value="<%= item_code %>" />
+				<input type="hidden" name="account_id" value="<%= account_id %>" />
+				<input type="hidden" name="quantity" value="50" />
+				<input type="submit" value="go" />
+			</form>
+		</div>
+	<% }else{ %>
+		<div id="yesCookie">
+			<div><%= customerId %>, welcome!!</div>
+			<form id="yesCookieForm" action="" method="post">
+				<input type="hidden" name="readCustomerId" value="<%= customerId %>" />
+				<input type="hidden" name="item_code" value="<%= item_code %>" />
+				<input type="hidden" name="account_id" value="<%= account_id %>" />
+				<input type="hidden" name="quantity" />
+				<input type="submit" value="go" />
+			</form>
+		</div>
+
+	<% } %>
+	</div>
 
 </body>
 <script type="text/javascript" src="/js/pricetag.js"></script>
