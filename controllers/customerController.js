@@ -1,7 +1,7 @@
 const customerModel = require('../models/customerModel.js');
 
 const readItem = async (req, res) => {
-	const { account_id, item_code } = req.query;
+	const { account_id, item_code } = req.params;
 	const result = await customerModel.readItem(account_id, item_code);
 	console.log(result[0]);
 	let obj = result[0];
@@ -20,6 +20,9 @@ const readItem = async (req, res) => {
 	}
 	obj.price = temp;
 	delete obj.purchase_cost;
+
+	obj.registered_date = obj.registered_date.toLocaleDateString();		//date format change
+
 
 	return res.render('pricetag', obj);
 }
