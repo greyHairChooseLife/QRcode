@@ -40,14 +40,20 @@ const readItem = async (req, res) => {
 
 const putIntoBasket = (req, res) => {
 	const { account_id, item_code, createCustomerId, readCustomerId, quantity } = req.body;
-	if(createCustomerId !== ''){	//this value exist means create cookie
-		res.cookie('bestCustomer', createCustomerId, {
-		});
+	let redirectId;
+	if(createCustomerId !== undefined){	//this value exist means create cookie
+		redirectId = createCustomerId;
+		res.cookie('bestCustomer', createCustomerId);		// generate cookie
+		console.log('cookie created as: ', createCustomerId);
+	}else if(readCustomerId !== undefined){
+		redirectId = readCustomerId;
+		console.log('cookie discovered as: ', readCustomerId);
 	}
-	return res.redirect(`http://localhost:5000/customer/basket/${createCustomerId}`);
+	//return res.send('s');
+	return res.redirect(`http://localhost:5000/customer/basket/${redirectId}`);
 }
 const readBasket = (req, res) => {
-	res.send('hi');
+	res.send('hi');		//trash
 }
 
 module.exports = {

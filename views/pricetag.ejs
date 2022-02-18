@@ -23,7 +23,7 @@
 	<% }else{ %>
 		<div id="yesCookie">
 			<div><%= customerId %>, welcome!!</div>
-			<form id="yesCookieForm" action="" method="post">
+			<form id="yesCookieForm" action="http://localhost:5000/customer/basket" method="post">
 				<input type="hidden" name="readCustomerId" value="<%= customerId %>" />
 				<input type="hidden" name="item_code" value="<%= item_code %>" />
 				<input type="hidden" name="account_id" value="<%= account_id %>" />
