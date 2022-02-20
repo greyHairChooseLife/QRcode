@@ -1,5 +1,5 @@
 <div id="search">
-	<form action="http://localhost:5000/clerk/visitor" method="post">
+	<form id="searchForm" action="http://localhost:5000/clerk/visitor" method="post">
 		<input id="textBox" type="text" name="customerId" placeholder="전화번호" />
 		<input type="submit" value="search" />
 		<div id="searchTip">전화번호를 정확히 입력하세요.</div>
@@ -9,13 +9,9 @@
 <div id="list">
 	<% for(var i=0; i<visitorList.length; i++){ %>
 		<% if(i%2 !== 1){ %>
-			<div class="oddLine">
-				<%= visitorList[i].mobile %>
-			</div>
+			<div class="oddLine list"><%= visitorList[i].mobile %></div>
 		<% }else{ %>
-			<div class="evenLine">
-				<%= visitorList[i].mobile %>
-			</div>
+			<div class="evenLine list"><%= visitorList[i].mobile %></div>
 		<% } %>
 	<% } %>
 </div>
