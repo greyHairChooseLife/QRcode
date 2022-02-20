@@ -27,20 +27,18 @@ const readItem = async (req, res) => {
 
 	const cookies = cookie.parse(req.headers.cookie);
 
-	if(cookies.bestCustomer === undefined){
+	if(cookies.bestCustomer === undefined || cookies.bestCustomer === ''){		//쿠키가 maxAge를 넘으면 그냥 사라지는게 아니다, value값이 삭제 될 뿐이다. 그래서 조건이 [쿠키가 존재하지 않을 때], [쿠키의 value가 비어있을 때] 두 가지다.
 		obj.customerId = null;
 	}else{
 		obj.customerId = cookies.bestCustomer;
 	}
-	
-	console.log(obj);
 
 	return res.render('pricetag', obj);
 }
 
 const putIntoBasket = (req, res) => {
 	const { account_id, item_code, createCustomerId, readCustomerId, quantity } = req.body;
-	let redirectId;		//deal with both cases
+	let redirectId;		//to deal with both cases
 	if(createCustomerId !== undefined){		// if there was no cookie, this variable has value. so to generate cookie
 		redirectId = createCustomerId;
 		res.cookie('bestCustomer', createCustomerId, {
