@@ -7,6 +7,13 @@ body {
 	width: 100vw;
 	height: 28vh;
 }
+#lengthOfList {
+	margin-top: 28vh;
+	margin-left: 6vw;
+	font-size: 60px;
+	padding: 2vw 2vw 5vw 2vw;
+	background-color: white;
+}
 #barcode {
 	background-color: white;
 	border-radius: 100px;
@@ -20,15 +27,12 @@ body {
 
 #list {
 	position: absolute;
-	top: 30vh;
+	top: 36vh;
 	left: 5vw;
 	width: 86vw;
 	font-size: 80px;
 	padding: 2vw 2vw 0vw 2vw;
-}
-#lengthOfList {
-	font-size: 60px;
-	padding: 2vw 2vw 5vw 2vw;
+	z-index: -1;
 }
 .quantity {
 	position: absolute;
@@ -44,6 +48,10 @@ body {
 	padding-left: 2vw;
 	background-color: #e0e0e0;
 	margin-bottom: 1vh;
+}
+#listSpacer {
+	height: 1px;
+	margin-bottom: 120vh;
 }
 
 #title {
@@ -67,3 +75,4 @@ body {
 	background-color: red;
 	margin-top: 85vh;
 }
+

@@ -2,9 +2,9 @@
 <div id="barcodeBox">
 	<svg id="barcode">
 	</svg>
+	<div id="lengthOfList">총 <%= inCart.length %>개</div>
 </div>
 <div id="list">
-	<div id="lengthOfList">총 <%= inCart.length %>개</div>
 	<% for(var i=0; i<inCart.length; i++){ %>
 		<% if(i%2 !== 1){ %>
 			<div class="oddLine list">
@@ -20,6 +20,7 @@
 			</div>
 		<% } %>
 	<% } %>
+	<div id="listSpacer"></div>
 </div>
 <div id="bottomBorder">
 	<div id="title"><%= customerId %><span id="subTitle">님의<br>장바구니</span></div>
