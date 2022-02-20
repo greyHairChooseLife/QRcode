@@ -1,4 +1,11 @@
-<div id="topBorder"></div>
+<div id="search">
+	<form action="http://localhost:5000/clerk/visitor" method="post">
+		<input id="textBox" type="text" name="customerId" placeholder="전화번호" />
+		<input type="submit" value="search" />
+		<div id="searchTip">전화번호를 정확히 입력하세요.</div>
+	</form>
+</div>
+<div id="selectTip">아니면, 선택하세요.</div>
 <div id="list">
 	<% for(var i=0; i<visitorList.length; i++){ %>
 		<% if(i%2 !== 1){ %>
@@ -12,11 +19,8 @@
 		<% } %>
 	<% } %>
 </div>
-<div id="search">
-<form action="http://localhost:5000/clerk/visitor" method="post">
-	<input tpye="text" name="customerId" placeholder="전화번호를 정확히 입력하세요." />
-	<input type="submit" value="search" />
-</form>
+<div id="bottomBorder">
+	<div id="title">방문 손님 목록</div>
 </div>
 
 <script type="text/javascript" src="/js/getVisitorList.js"></script>
