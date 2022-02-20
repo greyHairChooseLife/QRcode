@@ -50,6 +50,14 @@ body {
 	margin-bottom: 1vh;
 }
 
+#msgWhileNoVisitor {
+	position: absolute;
+	top: 20vh;
+	font-size: 70px;
+	width: 100vw;
+	text-align: center;
+}
+
 #title {
 	font-size: 120px;
 	color: white;
