@@ -1,0 +1,69 @@
+body {
+	margin: 0;
+}
+#barcodeBox {
+	background-color: red;
+	position: fixed;
+	width: 100vw;
+	height: 25vh;
+}
+#barcode {
+	background-color: white;
+	border-radius: 100px;
+	position: fixed;
+	top: 2.5vh;
+	left: 5vw;
+	width: 90vw;
+	height: 20vh;
+	z-index: 1;
+}
+
+#list {
+	position: absolute;
+	top: 30vh;
+	left: 5vw;
+	width: 86vw;
+	font-size: 80px;
+	padding: 2vw 2vw 0vw 2vw;
+}
+#lengthOfList {
+	font-size: 60px;
+	padding: 2vw 2vw 5vw 2vw;
+}
+.quantity {
+	position: absolute;
+	right: 6vw;
+}
+
+.oddLine {
+	padding-left: 2vw;
+	background-color: #f2d5d3;
+	margin-bottom: 1vh;
+}
+.evenLine {
+	padding-left: 2vw;
+	background-color: #e0e0e0;
+	margin-bottom: 1vh;
+}
+
+#title {
+	font-size: 120px;
+	color: white;
+	height: 100vh;
+	width: 100vw;
+	text-align: left;
+	margin-top: 1vh;
+	margin-left: 4vw;
+}
+#subTitle {
+	font-size: 60px;
+}
+
+
+#bottomBorder {
+	position: fixed;
+	width: 100vw;
+	height: 15vh;
+	background-color: red;
+	margin-top: 85vh;
+}

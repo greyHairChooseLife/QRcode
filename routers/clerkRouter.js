@@ -3,6 +3,6 @@ const router = express.Router();
 const clerkController = require('../controllers/clerkController.js');
 
 router.get('/visitor', clerkController.getVisitorList);
-router.post('/visitor', clerkController.searchVisitor);
+router.post('/visitor', clerkController.readVisitor);
 
 module.exports = router;
