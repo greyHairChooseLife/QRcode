@@ -1,0 +1,23 @@
+<div id="topBorder"></div>
+<div id="list">
+	<% for(var i=0; i<visitorList.length; i++){ %>
+		<% if(i%2 !== 1){ %>
+			<div class="oddLine">
+				<%= visitorList[i].mobile %>
+			</div>
+		<% }else{ %>
+			<div class="evenLine">
+				<%= visitorList[i].mobile %>
+			</div>
+		<% } %>
+	<% } %>
+</div>
+<div id="search">
+<form action="http://localhost:5000/clerk/visitor" method="post">
+	<input tpye="text" name="customerId" placeholder="전화번호를 정확히 입력하세요." />
+	<input type="submit" value="search" />
+</form>
+</div>
+
+<script type="text/javascript" src="/js/getVisitorList.js"></script>
+<link rel="stylesheet" href="/css/getVisitorList.css">

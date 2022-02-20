@@ -28,9 +28,18 @@ const readBasket = async (customerId) => {
 	}
 }
 
+const visitorList = async () => {
+	const [result] = await db.query(`SELECT DISTINCT mobile FROM customerBasket WHERE created_date >= date_add(NOW(), interval -12 hour)`);
+	if(result === undefined){
+		return null;
+	}else{
+		return result;
+	}
+}
+
 module.exports = {
 	readItem,
 	putIntoBasket,
 	readBasket,
-
+	visitorList,
 };
