@@ -43,10 +43,3 @@ body {
 .evenLine {
 	padding-left: 2vw;
 }
-
-#test {
-	position: absolute;
-	top: 120vh;
-	height: 1px;
-	width: 1px;
-}
