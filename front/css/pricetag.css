@@ -122,6 +122,7 @@ body {
 	color: red;
 	border: solid 9px red;
 	border-radius: 55px;
+	cursor: pointer;
 }
 
 #quantityIndicator {

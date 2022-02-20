@@ -18,7 +18,7 @@
 		<div id="cookie"> 
 			<% if(customerId === null){ %>
 				<div id="noCookie">
-					<form id="noCookieForm" action="http://localhost:5000/customer/basket" method="post">
+					<form id="noCookieForm" action="http://localhost:5000/customer/basket" onsubmit="return checkQuantity()" method="post">
 						<input id="mobilePlace" type="text" name="createCustomerId" placeholder="전화번호 입력 " />
 						<input type="hidden" name="item_code" value="<%= item_code %>" />
 						<input type="hidden" name="account_id" value="<%= account_id %>" />
@@ -28,7 +28,7 @@
 				</div>
 			<% }else{ %>
 				<div id="yesCookie">어서오세요,<br><%= customerId %>님
-					<form id="yesCookieForm" action="http://localhost:5000/customer/basket" method="post">
+					<form id="yesCookieForm" action="http://localhost:5000/customer/basket" onsubmit="return checkQuantity()" method="post">
 						<input type="hidden" name="readCustomerId" value="<%= customerId %>" />
 						<input type="hidden" name="item_code" value="<%= item_code %>" />
 						<input type="hidden" name="account_id" value="<%= account_id %>" />

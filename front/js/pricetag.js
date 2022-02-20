@@ -46,3 +46,11 @@ window.addEventListener('scroll', ()=>{
 		title.style.marginTop = '0vh';
 	}
 })
+
+const checkQuantity = () => {		//수량이 0개일 때 form태그의 action 실행 중지
+	if(quantity === 0){
+		alert('1개 이상 선택하세요.');
+		return false;
+	}
+	return true;
+}
