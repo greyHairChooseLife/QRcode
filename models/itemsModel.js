@@ -6,7 +6,7 @@ const db = require('../config/db.js').promise();
 //}
 
 const read_all_items = async () => {
-	const [result] = await db.query(`SELECT name, registered_date, purchase_cost, size FROM items`);
+	const [result] = await db.query(`SELECT name, registered_date, purchase_cost, size, barcode FROM items`);
 	if(result == undefined){
 		return null;
 	}else{
@@ -15,7 +15,7 @@ const read_all_items = async () => {
 }
 
 const control_item = async (account_id) => {
-	const [result] = await db.query(`SELECT code, name, registered_date, purchase_cost, size FROM items WHERE account_id=?`, [account_id]);
+	const [result] = await db.query(`SELECT item_code, name, registered_date, purchase_cost, size, barcode FROM items WHERE account_id=?`, [account_id]);
 	if(result == undefined){
 		return null;
 	}else{
@@ -24,7 +24,7 @@ const control_item = async (account_id) => {
 }
 
 const create_item = async (account_id, item) => {
-	const [result] = await db.query(`INSERT INTO items (code, name, registered_date, purchase_cost, account_id, size) VALUES(?,?,now(),?,?,?)`, [item.code, item.name, item.purchase_cost, account_id, item.size]);
+	const [result] = await db.query(`INSERT INTO items (item_code, name, registered_date, purchase_cost, account_id, size, barcode) VALUES(?,?,now(),?,?,?,?)`, [item.item_code, item.name, item.purchase_cost, account_id, item.size, item.barcode]);
 	if(result == undefined){
 		return null;
 	}else{
@@ -33,7 +33,7 @@ const create_item = async (account_id, item) => {
 }
 
 const update_item = async (account_id, item) => {
-	const [result] = await db.query(`UPDATE items SET name='${item.name}', registered_date=now(), purchase_cost=${item.purchase_cost}, size='${item.size}' WHERE account_id=? AND code=?`, [account_id, item.code]);
+	const [result] = await db.query(`UPDATE items SET name='${item.name}', registered_date=now(), purchase_cost=${item.purchase_cost}, size='${item.size}', barcode='${item.barcode}' WHERE account_id=? AND item_code=?`, [account_id, item.item_code]);
 	if(result == undefined){
 		return null;
 	}else{

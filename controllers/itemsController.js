@@ -8,7 +8,10 @@ const read_all_items = async (req, res) => {
 
 const control_item = async (req, res) => {
 	const items = await itemsModel.control_item(req.query.account_id);
-
+	for(var i=0; i<items.length; i++){			//db에 저장된 size는 null이 될 수 있다. 근데 client에서 xlsx file Read할 때 빈 칸을 undefined로 읽어온다. 그러니까 차라리 문자열'undified'로 양쪽 모두 통일 시켜서 비교 할 수 있도록 하는것
+		if(items[i].size === null)
+			items[i].size = 'undefined'
+	}
 	return res.json(items);
 }
 

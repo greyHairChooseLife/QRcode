@@ -10,11 +10,13 @@
 			<div class="oddLine list">
 				<%= inCart[i].name %>
 				<span class="quantity"><%= inCart[i].quantity %>개</span>
+				<input type="hidden" name="barcode" value="<%= inCart[i].barcode %>" />
 			</div>
 		<% }else{ %>
 			<div class="evenLine list">
 				<%= inCart[i].name %>
 				<span class="quantity"><%= inCart[i].quantity %>개</span>
+				<input type="hidden" name="barcode" value="<%= inCart[i].barcode %>" />
 			</div>
 		<% } %>
 	<% } %>
