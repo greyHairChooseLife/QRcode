@@ -20,7 +20,7 @@ const putIntoBasket = async (obj) => {
 }
 
 const readBasket = async (customerId) => {
-	const [result] = await db.query(`SELECT mobile, item_code, account_id, quantity FROM customerBasket WHERE created_date >= date_add(NOW(), interval -12 hour)`)		//현재시간 ~ 12시간 전 까지만 불러오면 아침 9시든 저녁9시든 전날과 겹치지 않으면서 당일 장바구니에 담은 것은 모두 검색된다.
+	const [result] = await db.query(`SELECT item_code, account_id, quantity FROM customerBasket WHERE mobile=${customerId} AND created_date >= date_add(NOW(), interval -12 hour)`)		//현재시간 ~ 12시간 전 까지만 불러오면 아침 9시든 저녁9시든 전날과 겹치지 않으면서 당일 장바구니에 담은 것은 모두 검색된다.
 	if(result == undefined){
 		return null;
 	}else{

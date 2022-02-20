@@ -44,6 +44,7 @@ const putIntoBasket = (req, res) => {
 	if(createCustomerId !== undefined){		// if there was no cookie, this variable has value. so to generate cookie
 		redirectId = createCustomerId;
 		res.cookie('bestCustomer', createCustomerId, {
+			maxAge: 1000*60*60*12,
 		});		// generate cookie
 		console.log('cookie created as: ', createCustomerId);
 	}else if(readCustomerId !== undefined){
@@ -60,6 +61,7 @@ const putIntoBasket = (req, res) => {
 	customerModel.putIntoBasket(obj);
 	return res.redirect(`http://localhost:5000/customer/basket/${redirectId}`);
 }
+
 const readBasket = async (req, res) => {
 	const result = await customerModel.readBasket(req.params.customerId);
 	res.send(result);

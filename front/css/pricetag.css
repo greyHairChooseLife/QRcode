@@ -2,18 +2,34 @@ body {
 	margin: 0;
 }
 
+#name {
+	position: absolute;
+	top: 25vh;
+	left: 17vw;
+	width: 80vw;
+	font-size: 60px;
+}
+
+#size {
+	position: absolute;
+	top: 33vh;
+	left: 17vw;
+	width: 80vw;
+	font-size: 60px;
+}
+
 #title {
 	text-align: center;
 	position: absolute;
 	width: 100vw;
-	top: 17vh;
+	top: 83vh;
 	font-size: 60px;
 	z-index: 2;
 }
 
 #box {
 	position: absolute;
-	top: 25vh;
+	top: 50vh;
 	width: 100vw;
 	height: 30vh;
 	background-color: red;
@@ -51,39 +67,87 @@ body {
 #registered_date {
 	position: absolute;
 	color: white;
-	text-align: right;
-	top: 26vh;
+	top: 2vh;
 	right: 4vw;
-	width: 100vw;
 	font-size: 40px;
 	z-index: 2;
 }
 
-#name {
+#cartArrow {
 	position: absolute;
-	top: 70vh;
-	left: 10vw;
-	width: 80vw;
-	font-size: 60px;
-	z-index: 2;
+	top: 95vh;
+	left: 40vw;
+	border-top: 2vh solid red;
+	border-right: 10vw solid transparent;
+	border-left: 10vw solid transparent;
+	animation: motion 1.8s linear 0s infinite;
+	margin-top: 0;
+}        
+@keyframes motion {
+	0% {margin-top: 0;}
+	50% {margin-top: 2vh;}
+	100% {margin-top: 0vh;}
 }
 
-#size {
+#cookie {
 	position: absolute;
-	top: 77vh;
+	top: 100vh;
 	left: 10vw;
-	width: 80vw;
-	font-size: 60px;
-	z-index: 2;
 }
 
-#cart {
+#mobilePlace {
+	font-size: 60px;
+	width: 50vw;
+	border: solid 1px grey;
+}
+
+#cookie>div {
+	font-size: 60px;
+}
+
+#submit {
 	position: absolute;
-	text-align: right;
-	top: 90vh;
+	background-color: transparent;
+	border: solid 1px grey;
+	top: 32vh;
+	left: 15vw;
+	font-size: 150px;
+}
+
+#quantityIndicator {
+	position: absolute;
+	top: 110vh;
+	left: 23vw;
+	font-size: 120px;
+}
+
+#quantityIndicator>span {
+	font-size: 200px;
+}
+
+#upBtn {
+	border-bottom: 10vh solid red;
+	border-right: 13vw solid transparent;
+	border-left: 13vw solid transparent;
+
+	position: absolute;
+	top: 105vh; 
 	right: 10vw;
-	width: 90vw;
-	font-size: 60px;
-	z-index: 2;
 }
 
+#downBtn {
+	border-top: 10vh solid red;
+	border-right: 13vw solid transparent;
+	border-left: 13vw solid transparent;
+
+	position: absolute;
+	top: 120vh; 
+	right: 10vw;
+}
+
+#bottomSpace {
+	position: absolute;
+	top: 146vh;
+	height: 1px;
+	width: 1px;
+}
