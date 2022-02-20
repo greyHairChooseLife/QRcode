@@ -1,18 +1,18 @@
 <% if(true){ %>
 <div id="barcodeBox">
-	<div id="barcode">
-	</div>
+	<svg id="barcode">
+	</svg>
 </div>
 <div id="list">
 	<div id="lengthOfList">총 <%= inCart.length %>개</div>
 	<% for(var i=0; i<inCart.length; i++){ %>
 		<% if(i%2 !== 1){ %>
-			<div class="oddLine">
+			<div class="oddLine list">
 				<%= inCart[i].name %>
 				<span class="quantity"><%= inCart[i].quantity %>개</span>
 			</div>
 		<% }else{ %>
-			<div class="evenLine">
+			<div class="evenLine list">
 				<%= inCart[i].name %>
 				<span class="quantity"><%= inCart[i].quantity %>개</span>
 			</div>
@@ -24,5 +24,6 @@
 </div>
 <% } %>
 
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.4/dist/JsBarcode.all.min.js"></script>
 <script type="text/javascript" src="/js/readVisitor.js"></script>
 <link rel="stylesheet" href="/css/readVisitor.css">

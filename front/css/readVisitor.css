@@ -5,16 +5,16 @@ body {
 	background-color: red;
 	position: fixed;
 	width: 100vw;
-	height: 25vh;
+	height: 28vh;
 }
 #barcode {
 	background-color: white;
 	border-radius: 100px;
 	position: fixed;
 	top: 2.5vh;
-	left: 5vw;
+	left: 4vw;
 	width: 90vw;
-	height: 20vh;
+	height: 23vh;
 	z-index: 1;
 }
 
