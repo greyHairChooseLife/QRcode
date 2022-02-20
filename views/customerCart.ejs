@@ -1,0 +1,21 @@
+<div id="topBorder"></div>
+<div id="customerId"><%= customerId %><span id="subTitle">님의<br>장바구니</span></div>
+<div id="list">
+	<% for(var i=0; i<inCart.length; i++){ %>
+		<% if(i%2 !== 1){ %>
+			<div class="oddLine">
+				<%= inCart[i].name %>
+				<span class="quantity"><%= inCart[i].quantity %></span>
+			</div>
+		<% }else{ %>
+			<div class="evenLine">
+				<%= inCart[i].name %>
+				<span class="quantity"><%= inCart[i].quantity %></span>
+			</div>
+		<% } %>
+	<% } %>
+	<div id="test"></div>
+</div>
+
+<script type="text/javascript" src="/js/customerCart.js"></script>
+<link rel="stylesheet" href="/css/customerCart.css">

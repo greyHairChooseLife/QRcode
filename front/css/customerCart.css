@@ -1,0 +1,52 @@
+body {
+	margin: 0;
+}
+#topBorder {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 20vh;
+	background-color: red;
+	z-index: 1;
+}
+
+#customerId	{
+	position: fixed;
+	top: 2vh;
+	left: 4vw;
+	font-size: 150px;
+	color: white;
+	z-index:2;
+}
+
+#subTitle {
+	font-size: 60px;
+}
+
+#list {
+	position: absolute;
+	top: 30vh;
+	left: 12vw;
+	height: 80vh;
+	width: 76vw;
+	font-size: 60px;
+}
+.quantity {
+	position: absolute;
+	right: 12vw;
+}
+
+.oddLine {
+	padding-left: 2vw;
+	background-color: #f2d5d3;
+}
+.evenLine {
+	padding-left: 2vw;
+}
+
+#test {
+	position: absolute;
+	top: 120vh;
+	height: 1px;
+	width: 1px;
+}

@@ -61,8 +61,15 @@ const putIntoBasket = (req, res) => {
 }
 
 const readBasket = async (req, res) => {
-	const result = await customerModel.readBasket(req.params.customerId);
-	res.send(result);
+	const customerId = req.params.customerId;
+	const result = await customerModel.readBasket(customerId);
+	console.log(result);
+	const obj = {
+		customerId: customerId,
+		inCart: result,
+	}
+	
+	res.render('customerCart', obj);
 }
 
 module.exports = {
