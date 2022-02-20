@@ -18,10 +18,12 @@ downBtn.addEventListener('click', () => {
 })
 
 const mobilePlace = document.getElementById("mobilePlace");
-mobilePlace.addEventListener('keyup', ()=>{
-	if(mobilePlace.value.length === 11)
-		mobilePlace.blur();
-})
+if(mobilePlace !== null){
+	mobilePlace.addEventListener('keyup', ()=>{
+		if(mobilePlace.value.length === 11)
+			mobilePlace.blur();
+	})
+}
 
 const cartArrow = document.getElementById('cartArrow');
 window.addEventListener('scroll', ()=>{
