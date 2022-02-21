@@ -28,7 +28,7 @@ const readItem = async (req, res) => {
 	const cookies = cookie.parse(req.headers.cookie);
 
 	if(cookies.bestCustomer === undefined || cookies.bestCustomer === ''){		//쿠키가 maxAge를 넘으면 그냥 사라지는게 아니다, value값이 삭제 될 뿐이다. 그래서 조건이 [쿠키가 존재하지 않을 때], [쿠키의 value가 비어있을 때] 두 가지다.
-		obj.customerId = null;
+		obj.customerId = null;			//null이면 새로 쿠키를 생성하도록 ejs와 연계하여 구현
 	}else{
 		obj.customerId = cookies.bestCustomer;
 	}
@@ -36,7 +36,7 @@ const readItem = async (req, res) => {
 	return res.render('pricetag', obj);
 }
 
-const putIntoBasket = (req, res) => {
+const putIntoCart = (req, res) => {
 	const { account_id, item_code, createCustomerId, readCustomerId, quantity } = req.body;
 	let redirectId;		//to deal with both cases
 	if(createCustomerId !== undefined){		// if there was no cookie, this variable has value. so to generate cookie
@@ -56,13 +56,13 @@ const putIntoBasket = (req, res) => {
 		quantity: quantity,
 	}
 	//console.log(account_id, item_code, quantity);
-	customerModel.putIntoBasket(obj);
-	return res.redirect(`http://localhost:5000/customer/basket/${redirectId}`);
+	customerModel.putIntoCart(obj);
+	return res.redirect(`http://localhost:5000/customer/cart/${redirectId}`);
 }
 
-const readBasket = async (req, res) => {
+const checkMyCart = async (req, res) => {
 	const customerId = req.params.customerId;
-	const result = await customerModel.readBasket(customerId);
+	const result = await customerModel.checkMyCart(customerId);
 	for(var i=0; i<result.length; i++){				//중복된 물건이면(바코드가 같음) 수량 합쳐서 하나의 요소로 만듦
 		for(var j=i+1; j<result.length; j++){
 			if(result[i].barcode === result[j].barcode){
@@ -76,11 +76,11 @@ const readBasket = async (req, res) => {
 		inCart: result,
 	}
 	
-	res.render('customerCart', obj);
+	res.render('checkMyCart', obj);
 }
 
 module.exports = {
 	readItem,
-	putIntoBasket,		//redirect to readBasket
-	readBasket,
+	putIntoCart,		//redirect to readCart
+	checkMyCart,
 }

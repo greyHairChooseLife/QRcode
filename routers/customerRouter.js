@@ -3,7 +3,7 @@ const router = express.Router();
 const customerController = require('../controllers/customerController.js');
 
 router.get('/readItem/:account_id/:item_code', customerController.readItem);
-router.post('/basket', customerController.putIntoBasket);
-router.get('/basket/:customerId', customerController.readBasket);
+router.post('/cart', customerController.putIntoCart);
+router.get('/cart/:customerId', customerController.checkMyCart);
 
 module.exports = router;
