@@ -54,3 +54,17 @@ const checkQuantity = () => {		//수량이 0개일 때 form태그의 action 실�
 	}
 	return true;
 }
+
+const waitTilCustomerId = document.getElementsByClassName('waitTilCustomerId');
+const checkCustomerId = document.getElementById('checkCustomerId');
+
+checkCustomerId.addEventListener('click', () => {
+	if(mobilePlace.value.length !== 11){
+		alert('11자리 전화번호를 써 주세요.');
+	}else{
+		checkCustomerId.style.display = 'none';
+		for(var i=0; i<waitTilCustomerId.length; i++){
+			waitTilCustomerId[i].style.display = 'block';
+		}
+	}
+})

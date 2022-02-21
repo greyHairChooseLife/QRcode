@@ -104,9 +104,11 @@ body {
 }
 
 #mobilePlace {
-	font-size: 60px;
-	width: 50vw;
-	border: solid 1px grey;
+	font-size: 70px;
+	width: 54vw;
+	border: solid 1px red;
+	border-radius: 20px;
+	padding: 2vw;
 }
 
 #cookie>div {
@@ -169,4 +171,18 @@ body {
 	top: 121vh;
 	height: 1px;
 	width: 1px;
+}
+
+#checkCustomerId {
+	position: absolute;
+	top: 70vh;
+	right: 10vw;
+	font-size: 70px;
+	border: solid 2px red;
+	border-radius: 20px;
+	padding: 1vw;
+}
+
+.waitTilCustomerId {
+	display: none;
 }
