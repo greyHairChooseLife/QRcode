@@ -40,3 +40,12 @@
 .updatingColumn {
 	display: none;
 }
+
+#listLength {
+	text-align: center;
+	margin-bottom: 2vh;
+}
+#listLength>span {
+	font-size: 1.5rem;
+	color: red;
+}

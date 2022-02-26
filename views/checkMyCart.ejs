@@ -26,7 +26,6 @@
 				<div class="columns is-mobile is-size-5 is-centered mb-3">
 					<div class="column has-background-danger-light is-9 mr-1 my-1"><%= inCart[i].name %></div>
 					<div class="column has-background-danger-light is-2 my-1 text-centered"><%= inCart[i].quantity %></div>
-					<input class="barcodeValue" type="hidden" value="<%= inCart[i].barcode %>" />
 				</div>
 			</div>
 			<div class="updatingColumn">
@@ -64,7 +63,7 @@
 			</div>
 		<% } %>
 		</section>
-
+		<div id="listLength">총 상품 가짓수 : <span><%= inCart.length %></span></div>
 	</body>
 </html>
 
