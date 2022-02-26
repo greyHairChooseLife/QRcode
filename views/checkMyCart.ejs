@@ -1,21 +1,67 @@
-<% if(true){ %>
-<div id="topBorder"></div>
-<div id="customerId"><%= customerId %><span id="subTitle">님의<br>장바구니</span></div>
-<div id="list">
-	<% for(var i=0; i<inCart.length; i++){ %>
-		<% if(i%2 !== 1){ %>
-			<div class="oddLine">
-				<%= inCart[i].name %>
-				<span class="quantity"><%= inCart[i].quantity %></span>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+		<link rel="stylesheet" href="/css/test.css">
+	</head>
+	<body class="has-navbar-fixed-top">
+		<nav class="navbar is-fixed-top">
+			<div id="cartImg">
+				<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"><path fill="hsl(348, 100%, 61%)" d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
 			</div>
-		<% }else{ %>
-			<div class="evenLine">
-				<%= inCart[i].name %>
-				<span class="quantity"><%= inCart[i].quantity %></span>
+			<section class="box mb-0">
+				<h6 class="title is-6 is-inline has-text-grey-light ml-3">안녕하세요,</h6>
+				<h2 class="title is-2 ml-3"><%= shortCustomerId %><span class="subtitle has-text-grey">님</span></h2>
+			</section>
+			<section class="">
+				<div class="notification is-danger has-text-centered p-2" id="msg">
+					<p>수정하려면 터치하세요.</p>
+				</div>
+			</section>
+		</nav>
+		<section class="box" id="itemList">
+		<% for(var i=0; i<inCart.length; i++){ %>
+			<div class="defaultColumn">
+				<div class="columns is-mobile is-size-5 is-centered mb-3">
+					<div class="column has-background-danger-light is-9 mr-1 my-1"><%= inCart[i].name %></div>
+					<div class="column has-background-danger-light is-2 my-1 text-centered"><%= inCart[i].quantity %></div>
+					<input class="barcodeValue" type="hidden" value="<%= inCart[i].barcode %>" />
+				</div>
+			</div>
+			<div class="updatingColumn">
+				<div class="columns is-mobile is-size-5 is-centered">
+					<div class="column column_middle has-background-danger-light is-11 mt-3">
+						품명 : <%= inCart[i].name %><br>
+						규격 : <%= inCart[i].size %><br>
+						가격 : <%= inCart[i].price %><br>
+						<p class="is-size-4 has-text-danger">수량 : <%= inCart[i].quantity %></p>
+					</div>
+				</div>
+				<div class="columns is-mobile is-size-5">
+					<div class="column column_bottom is-2 ml-4">
+						<button class="delete is-large" />
+					</div>
+					<div class="column column_bottom is-1 mr-4">
+					</div>
+					<div class="column column_bottom is-8 mb-5">
+						<button class="button has-background-danger-light">
+							<i class="fa fa-chevron-down fa-2x" aria-hidden="true"></i>
+						</button>
+						<button class="button has-background-danger-light mr-2">
+							<i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i>
+						</button>
+						<button class="button has-background-link">
+							<p class="has-text-white is-size-5 has-text-weight-bold	">확인</p>
+						</button>
+					</div>
+				</div>
 			</div>
 		<% } %>
-	<% } %>
-</div>
-<% } %>
+		</section>
 
-<link rel="stylesheet" href="/css/checkMyCart.css">
+	</body>
+</html>
+
+<script src="https://kit.fontawesome.com/7a1ab13579.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/checkMyCart.js"></script>

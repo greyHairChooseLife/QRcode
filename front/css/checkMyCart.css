@@ -23,6 +23,14 @@ body {
 	font-size: 60px;
 }
 
+#msg {
+	position: absolute;
+	top: 24vh;
+	width: 100vw;
+	text-align: center;
+	font-size: 45px;
+}
+
 #list {
 	position: absolute;
 	top: 30vh;

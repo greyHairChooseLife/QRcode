@@ -68,3 +68,10 @@ checkCustomerId.addEventListener('click', () => {
 		}
 	}
 })
+
+if(mobilePlace === null){
+	checkCustomerId.style.display = 'none';
+	for(var i=0; i<waitTilCustomerId.length; i++){
+		waitTilCustomerId[i].style.display = 'block';
+	}
+}

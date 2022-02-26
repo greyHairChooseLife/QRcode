@@ -37,7 +37,7 @@ const readItem = async (req, res) => {
 }
 
 const putIntoCart = (req, res) => {
-	const { account_id, item_code, createCustomerId, readCustomerId, quantity } = req.body;
+	const { account_id, item_code, createCustomerId, readCustomerId, quantity, barcode } = req.body;
 	let redirectId;		//to deal with both cases
 	if(createCustomerId !== undefined){		// if there was no cookie, this variable has value. so to generate cookie
 		redirectId = createCustomerId;
@@ -54,6 +54,7 @@ const putIntoCart = (req, res) => {
 		item_code: item_code,
 		customerId: redirectId,
 		quantity: quantity,
+		barcode: barcode,
 	}
 	//console.log(account_id, item_code, quantity);
 	customerModel.putIntoCart(obj);
@@ -63,6 +64,10 @@ const putIntoCart = (req, res) => {
 const checkMyCart = async (req, res) => {
 	const customerId = req.params.customerId;
 	const result = await customerModel.checkMyCart(customerId);
+	for(var i=0; i<result.length; i++){				//판매가격 만들고 매입비용 데이터는 삭제
+		result[i].price = result[i].purchase_cost * 0.3;
+		delete result[i].purchase_cost;
+	}
 	for(var i=0; i<result.length; i++){				//중복된 물건이면(바코드가 같음) 수량 합쳐서 하나의 요소로 만듦
 		for(var j=i+1; j<result.length; j++){
 			if(result[i].barcode === result[j].barcode){
@@ -71,10 +76,16 @@ const checkMyCart = async (req, res) => {
 			}
 		}
 	}
+	let shortCustomerId = '';		//끝 4자리만 나오게
+	let tempArr = customerId.split('');
+	for(var i=0; i<4; i++){
+		 shortCustomerId += tempArr[tempArr.length-(i+1)];
+	}
 	const obj = {
-		customerId: customerId,
+		shortCustomerId: shortCustomerId,
 		inCart: result,
 	}
+	console.log('re: ', result);
 	
 	res.render('checkMyCart', obj);
 }

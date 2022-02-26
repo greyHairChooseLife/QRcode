@@ -1,0 +1,42 @@
+#cartImg {
+	position: absolute;
+	top: 2vh;
+	right: 8vw;
+	opacity: 0.9;
+}
+
+.column {
+	border-radius: 5px;
+	height: 7vh;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.text-centered {
+	text-align: center;
+}
+
+.column_middle {
+	height: 25vh;
+}
+
+.column_bottom {
+	height: 9vh;
+}
+
+#itemList {
+	margin-top: 17vh;
+}
+
+.fa {
+	color: hsl(348, 100%, 61%);
+}
+
+.button {
+	border: none;
+}
+
+.updatingColumn {
+	display: none;
+}
