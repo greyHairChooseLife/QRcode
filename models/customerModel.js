@@ -28,6 +28,15 @@ const updateCart = async (customerId, barcode, quantity) => {
 	}
 }
 
+const deleteCart = async (customerId, barcode) => {
+	const [result] = await db.query(`DELETE FROM customerBasket WHERE mobile=${customerId} AND barcode=${barcode} AND created_date >= date_add(NOW(), interval -12 hour)`);
+	if(result == undefined){
+		return null;
+	}else{
+		return result;
+	}
+}
+
 const checkMyCart = async (customerId) => {
 	const [result] = await db.query(`SELECT items.name, items.size, items.purchase_cost , items.barcode, cb.quantity FROM items JOIN customerBasket AS cb ON items.item_code=cb.item_code AND items.account_id=cb.account_id WHERE mobile=${customerId} AND created_date >= date_add(NOW(), interval -12 hour)`);		//현재시간 ~ 12시간 전 까지만 불러오면 아침 9시든 저녁9시든 전날과 겹치지 않으면서 당일 장바구니에 담은 것은 모두 검색된다.
 	if(result == undefined){
@@ -50,6 +59,7 @@ module.exports = {
 	readItem,
 	putIntoCart,
 	updateCart,
+	deleteCart,
 	checkMyCart,
 	visitorList,
 };

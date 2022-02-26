@@ -29,7 +29,10 @@ for(var i=0; i<defaultColumn.length; i++){
 			updatingColumn[m].style.display = 'none';
 		});
 		del[m].addEventListener('click', ()=>{
-			alert('del');
+			if(window.confirm('정말로 삭제하시겠습니까?')){
+				updatingForm[m].action = `http://localhost:5000/customer/deleteCart`;
+				updatingForm[m].submit();
+			}
 		});
 		up[m].addEventListener('click', ()=>{
 			updatingForm[m].quantity.value = Number(updatingForm[m].quantity.value) + 1;

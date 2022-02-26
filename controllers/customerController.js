@@ -95,9 +95,16 @@ const updateCart = async (req, res) => {
 	return res.redirect(`http://localhost:5000/customer/cart/${customerId}`);
 }
 
+const deleteCart = async (req, res) => {
+	const { customerId, barcode } = req.body;
+	customerModel.deleteCart(customerId, barcode);
+	return res.redirect(`http://localhost:5000/customer/cart/${customerId}`);
+}
+
 module.exports = {
 	readItem,
-	putIntoCart,		//redirect to readCart
 	checkMyCart,
-	updateCart,
+	putIntoCart,		//redirect to readCart
+	updateCart,			//redirect to readCart
+	deleteCart,			//redirect to readCart
 }
