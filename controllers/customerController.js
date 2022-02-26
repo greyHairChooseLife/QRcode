@@ -83,15 +83,21 @@ const checkMyCart = async (req, res) => {
 	}
 	const obj = {
 		shortCustomerId: shortCustomerId,
+		customerId: customerId,
 		inCart: result,
 	}
-	console.log('re: ', result);
-	
-	res.render('checkMyCart', obj);
+	return res.render('checkMyCart', obj);
+}
+
+const updateCart = async (req, res) => {
+	const { customerId, barcode, quantity } = req.body;
+	customerModel.updateCart(customerId, barcode, quantity);
+	return res.redirect(`http://localhost:5000/customer/cart/${customerId}`);
 }
 
 module.exports = {
 	readItem,
 	putIntoCart,		//redirect to readCart
 	checkMyCart,
+	updateCart,
 }

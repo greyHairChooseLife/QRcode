@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-		<link rel="stylesheet" href="/css/test.css">
+		<link rel="stylesheet" href="/css/checkMyCart.css">
 	</head>
 	<body class="has-navbar-fixed-top">
 		<nav class="navbar is-fixed-top">
@@ -35,27 +35,32 @@
 						품명 : <%= inCart[i].name %><br>
 						규격 : <%= inCart[i].size %><br>
 						가격 : <%= inCart[i].price %><br>
-						<p class="is-size-4 has-text-danger">수량 : <%= inCart[i].quantity %></p>
+						<p class="is-size-4 has-text-danger">수량 : <span class="quantity"><%= inCart[i].quantity %></span></p>
 					</div>
 				</div>
 				<div class="columns is-mobile is-size-5">
 					<div class="column column_bottom is-2 ml-4">
-						<button class="delete is-large" />
+						<button class="delete is-large del" />
 					</div>
 					<div class="column column_bottom is-1 mr-4">
 					</div>
 					<div class="column column_bottom is-8 mb-5">
-						<button class="button has-background-danger-light">
+						<button class="button has-background-danger-light down">
 							<i class="fa fa-chevron-down fa-2x" aria-hidden="true"></i>
 						</button>
-						<button class="button has-background-danger-light mr-2">
+						<button class="button has-background-danger-light up mr-2">
 							<i class="fa fa-chevron-up fa-2x" aria-hidden="true"></i>
 						</button>
-						<button class="button has-background-link">
+						<button class="button has-background-link apply">
 							<p class="has-text-white is-size-5 has-text-weight-bold	">확인</p>
 						</button>
 					</div>
 				</div>
+				<form class="updatingForm" action="" method="post">
+					<input type="hidden" name="customerId" value=<%= customerId %> />
+					<input type="hidden" name="barcode" value=<%= inCart[i].barcode %> />
+					<input type="hidden" name="quantity" value=<%= inCart[i].quantity %> />
+				</form>
 			</div>
 		<% } %>
 		</section>
