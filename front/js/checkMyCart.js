@@ -1,14 +1,3 @@
-const columns = document.getElementsByClassName('columns');
-const barcodeValue = document.getElementsByClassName('barcodeValue');
-
-for(var i=0; i<columns.length; i++){
-	(function(m){
-		columns[m].addEventListener('click', (e)=>{
-			//alert(barcodeValue[m].value);
-		});
-	})(i)
-}
-
 const defaultColumn = document.getElementsByClassName('defaultColumn');
 const updatingColumn = document.getElementsByClassName('updatingColumn');
 const del = document.getElementsByClassName('del');
