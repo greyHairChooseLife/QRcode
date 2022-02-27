@@ -11,6 +11,10 @@ const readItem = async (account_id, item_code) => {
 
 const putIntoCart = async (obj) => {
 	const { account_id, item_code, customerId, quantity, barcode } = obj;
+	const [updateResult] = await db.query(`UPDATE customerBasket SET quantity=${quantity} WHERE mobile=${customerId} AND barcode=${barcode} AND created_date >= date_add(NOW(), interval -12 hour)`);
+	if(updateResult.changedRows > 0){
+		return updateResult;
+	} 
 	const [result] = await db.query(`INSERT INTO customerBasket (mobile, item_code, account_id, quantity, created_date, barcode) VALUES(?,?,?,?,NOW(), ?)`, [customerId, item_code, account_id, quantity, barcode]);
 	if(result == undefined){
 		return null;
