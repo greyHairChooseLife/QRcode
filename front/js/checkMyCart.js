@@ -32,8 +32,16 @@ for(var i=0; i<defaultColumn.length; i++){
 			quantity[m].innerText = updatingForm[m].quantity.value;
 		});
 		apply[m].addEventListener('click', ()=>{
-			updatingForm[m].action = `http://localhost:5000/customer/updateCart`;
-			updatingForm[m].submit();
+			if(Number(updatingForm[m].quantity.value) !== 0){
+				updatingForm[m].action = `http://localhost:5000/customer/updateCart`;
+				updatingForm[m].submit();
+			}else{
+				if(window.confirm('정말로 삭제하시겠습니까?')){
+					updatingForm[m].action = `http://localhost:5000/customer/deleteCart`;
+					updatingForm[m].submit();
+					updatingForm[m].submit();
+				}
+			}
 		});
 	})(i)
 }
