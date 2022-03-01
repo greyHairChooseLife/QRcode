@@ -1,10 +1,10 @@
-const visitorList = document.getElementsByClassName('list');
+const visitorList = document.getElementsByClassName('visitorList');
 const searchForm = document.getElementById('searchForm');
-const textBox = document.getElementById('textBox');
+const customerIdInput = document.getElementById('customerIdInput');
 
 for(var i=0; i<visitorList.length; i++){
 	visitorList[i].addEventListener('click', (e)=>{
-		textBox.value = e.target.innerHTML;
+		customerIdInput.value = e.target.innerHTML;
 		searchForm.submit();
 	})
 }

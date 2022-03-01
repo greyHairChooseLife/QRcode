@@ -1,93 +1,57 @@
-body {
-	margin: 0;
+#card {
+	border-radius: 0;
 }
 
-#name {
-	position: absolute;
-	top: 15vh;
-	left: 17vw;
-	width: 80vw;
-	font-size: 60px;
-}
-
-#size {
-	position: absolute;
-	top: 21vh;
-	left: 17vw;
-	width: 80vw;
-	font-size: 60px;
-}
-
-#title {
-	position: absolute;
-	right: 0vw;
-	font-size: 45px;
-	background-color: red;
-	color: white;
-	padding: 2vw;
-	z-index: 2;
-}
-
-#box {
-	position: absolute;
-	top: 32vh;
-	width: 100vw;
-	height: 30vh;
-	background-color: red;
+#price {
+	font-size: 4.5rem;
 }
 
 #upCircle {
-	position: relative;
-	top: -5vh;
-	margin: 0px auto;
-	width: 150px;
-	height: 150px;
+	position: absolute;
+	top: -2rem;
+	left: calc(50% - 1.75rem);
+	width: 3.5rem;
+	height: 3.5rem;
 	background-color: white;
 	border-radius: 50%;
 }
 #downCircle {
-	position: relative;
-	top: 18vh;
-	margin: 0px auto;
-	width: 150px;
-	height: 150px;
+	position: absolute;
+	bottom: -2rem;
+	left: calc(50% - 1.75rem);
+	width: 3.5rem;
+	height: 3.5rem;
 	background-color: white;
 	border-radius: 50%;
 }
-
-#price {
-	position: absolute;
-	color: white;
-	text-align: center;
-	top: 9vh;
-	width: 100vw;
-	font-size: 200px;
-	z-index: 2;
-}
-
 #registered_date {
 	position: absolute;
+	top: 1vh;
+	right: 2vw;
+	font-size: 1.2rem;
 	color: white;
-	top: 2vh;
-	right: 4vw;
-	font-size: 40px;
 	z-index: 2;
 }
 
-#cartArrow {
+#guideSymbol {
+	position: relative;
+	top: 19vh;
+	margin-left: 38vw;
+}
+#cartImg {
 	position: absolute;
-	top: 92vh;
-	left: 40vw;
-	border-top: 2vh solid red;
-	border-right: 10vw solid transparent;
-	border-left: 10vw solid transparent;
+	top: 0;
+	left: 0;
 	animation: motion 1.8s linear 0s infinite;
 	margin-top: 0;
 }        
-#cartImg {
+#cartArrow {
 	position: absolute;
-	top: 79vh;
-	left: 40vw;
+	top: 13vh;
+	left: 0;
+	border-top: 2vh solid hsl(348, 100%, 61%);
+	border-right: 10vw solid transparent;
+	border-left: 10vw solid transparent;
 	animation: motion 1.8s linear 0s infinite;
 	margin-top: 0;
 }        
@@ -97,92 +61,93 @@ body {
 	100% {margin-top: 0vh;}
 }
 
-#cookie {
-	position: absolute;
-	top: 70vh;
+#formBothCase {
+	position: relative;
+	top: 2rem;
+	width: 100vw;
+}
+
+#upBtn>button {
+	height: 30vw;
+	width: 30vw;
+}
+#upBtn>button>i {
+	font-size: 20vw;
+}
+#power_upBtn>button {
+	height: 30vw;
+	width: 20vw;
+}
+#poser_upBtn>button>i {
+	font-size: 15vw;
+}
+#downBtn>button {
+	height: 30vw;
+	width: 30vw;
+}
+#downBtn>button>i {
+	font-size: 20vw;
+}
+#power_downBtn>button {
+	height: 30vw;
+	width: 20vw;
+}
+#power_downBtn>button>i {
+	font-size: 15vw;
+}
+
+#power_upBtn {
+	position: relative;
+	float: right;
+	top: 2rem;
+	margin-right: 3vw;
+}
+#upBtn {
+	position: relative;
+	float: right;
+	top: 2rem;
+	margin-right: 3vw;
+}
+#power_downBtn {
+	position: relative;
+	float: right;
+	margin-top: 2rem;
+	margin-right: 3vw;
+}
+#downBtn {
+	position: relative;
+	float: right;
+	margin-top: 2rem;
+	margin-right: 3vw;
+}
+
+#submitBtn {
+	position: relative;
+	width: 90vw;
+	margin-top: 1rem;
+	margin-left: 5vw;
+	margin-bottom: 1rem;
+}
+
+#mobilePlace_ {
+	width: 80vw;
 	left: 10vw;
 }
 
-#mobilePlace {
-	font-size: 70px;
-	width: 54vw;
-	border: solid 1px red;
-	border-radius: 20px;
-	padding: 2vw;
-}
-
-#cookie>div {
-	font-size: 60px;
-}
-
-#submit {
-	position: absolute;
-	background-color: transparent;
-	top: 35vh;
-	left: 5vw;
-	font-size: 120px;
-	color: red;
-	border: solid 9px red;
-	border-radius: 55px;
-	cursor: pointer;
-}
-
 #quantityIndicator {
-	position: absolute;
-	top: 85vh;
-	left: 23vw;
-	font-size: 120px;
-}
-
-#quantityIndicator>span {
-	font-size: 200px;
-}
-
-#upBtn {
-	border-bottom: 10vh solid red;
-	border-right: 13vw solid transparent;
-	border-left: 13vw solid transparent;
-
-	position: absolute;
-	top: 80vh; 
-	right: 13vw;
-	transition: 100ms;
-}
-#upBtn:active {
-	top: 79vh;
-}
-
-#downBtn {
-	border-top: 10vh solid red;
-	border-right: 13vw solid transparent;
-	border-left: 13vw solid transparent;
-
-	position: absolute;
-	top: 95vh; 
-	right: 13vw;
-	transition: 100ms;
-}
-#downBtn:active {
-	top: 96vh;
+	position: relative;
+	font-size: 30vw;
+	top: 5vw;
+	margin-left: 5vw;
+	width: vw;
+	padding: 3vw;
+    text-align: center;
+	color: hsl(0, 0%, 29%);
 }
 
 #bottomSpace {
 	position: absolute;
-	top: 121vh;
+	top: 110vh;
 	height: 1px;
 	width: 1px;
-}
-
-#checkCustomerId {
-	position: absolute;
-	top: 70vh;
-	right: 10vw;
-	font-size: 70px;
-	border: solid 2px red;
-	border-radius: 20px;
-	padding: 1vw;
-}
-
-.waitTilCustomerId {
-	display: none;
 }

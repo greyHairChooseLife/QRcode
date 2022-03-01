@@ -1,18 +1,34 @@
-const quantityShow = document.getElementById("quantityShow");
+const quantityIndicator = document.getElementById("quantityIndicator");
 const upBtn = document.getElementById("upBtn");
+const power_upBtn = document.getElementById("power_upBtn");
 const downBtn = document.getElementById("downBtn");
+const power_downBtn = document.getElementById("power_downBtn");
 
 const quantityValue = document.getElementById("quantityValue");
 
 let quantity = 0;
-quantityShow.innerText = quantity;
+quantityIndicator.innerText = quantity;
 upBtn.addEventListener('click', () => {
-	quantityShow.innerText = ++quantity;
+	quantityIndicator.innerText = ++quantity;
+	quantityValue.value = quantity;
+})
+power_upBtn.addEventListener('click', () => {
+	quantity += 5;
+	quantityIndicator.innerText = quantity;
 	quantityValue.value = quantity;
 })
 downBtn.addEventListener('click', () => {
 	if(quantity > 0){
-		quantityShow.innerText = --quantity;
+		quantityIndicator.innerText = --quantity;
+		quantityValue.value = quantity;
+	}
+})
+power_downBtn.addEventListener('click', () => {
+	if(quantity > 0){
+		quantity -= 5;
+		if(quantity < 0)
+			quantity = 0;
+		quantityIndicator.innerText = quantity ;
 		quantityValue.value = quantity;
 	}
 })
@@ -25,53 +41,37 @@ if(mobilePlace !== null){
 	})
 }
 
-const title = document.getElementById('title');
-const activeCart = document.getElementById('activeCart');
-const deactiveCart = document.getElementById('deactiveCart');
-activeCart.style.display = 'none';
-const cartArrow = document.getElementById('cartArrow');
-const cartImg = document.getElementById('cartImg');
+const mobilePlace_ = document.getElementById("mobilePlace_");
+const controller = document.getElementById('controller');
+controller.style.display = 'none';
+mobilePlace_.style.display = 'none';
+const guideSymbol = document.getElementById('guideSymbol');
+
 window.addEventListener('scroll', ()=>{
 	if(window.pageYOffset > 0){
-		cartArrow.style.display = 'none';
-		cartImg.style.display = 'none';
-		activeCart.style.display = 'block';
-		deactiveCart.style.display = 'none';
-		title.style.marginTop = '21vh';
+		guideSymbol.style.display = 'none';
+		controller.style.display = 'block';
+		mobilePlace_.style.display = 'block';
 	}else if(window.pageYOffset === 0){
-		cartArrow.style.display = 'block';
-		cartImg.style.display = 'block';
-		activeCart.style.display = 'none';
-		deactiveCart.style.display = 'block';
-		title.style.marginTop = '0vh';
+		guideSymbol.style.display = 'block';
+		controller.style.display = 'none';
+		mobilePlace_.style.display = 'none';
 	}
 })
 
-const checkQuantity = () => {		//수량이 0개일 때 form태그의 action 실행 중지
-	if(quantity === 0){
-		alert('1개 이상 선택하세요.');
-		return false;
-	}
-	return true;
-}
-
-const waitTilCustomerId = document.getElementsByClassName('waitTilCustomerId');
-const checkCustomerId = document.getElementById('checkCustomerId');
-
-checkCustomerId.addEventListener('click', () => {
-	if(mobilePlace.value.length !== 11){
+const mainForm = document.getElementById('mainForm');
+const submitBtn = document.getElementById('submitBtn');
+submitBtn.addEventListener('click', () => {
+	if(mobilePlace !== null){
+		if(mobilePlace.value.length !== 11){
 		alert('11자리 전화번호를 써 주세요.');
-	}else{
-		checkCustomerId.style.display = 'none';
-		for(var i=0; i<waitTilCustomerId.length; i++){
-			waitTilCustomerId[i].style.display = 'block';
 		}
+		else{
+		mainForm.submit();
+		}
+	}else if(quantity < 1){
+		alert('1개 이상 선택하세요.');
+	}else{
+		mainForm.submit();
 	}
 })
-
-if(mobilePlace === null){
-	checkCustomerId.style.display = 'none';
-	for(var i=0; i<waitTilCustomerId.length; i++){
-		waitTilCustomerId[i].style.display = 'block';
-	}
-}

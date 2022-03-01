@@ -2,75 +2,48 @@ body {
 	margin: 0;
 }
 
-#search {
+#title1 {
 	position: absolute;
-	top: 5vh;
-}
-#search>form>input {
-	margin-left: 5vw;
-	height: 6vh;
-	font-size: 60px;
-	padding: 2vw;
-}
-#textBox {
-	border: solid 2px grey;
-	width: 60vw;
-	height: 6vh;
-}
-#searchTip {
-	font-size: 45px;
-	margin-top: 2vh;
-	margin-left: 6vw;
-}
-
-#selectTip {
-	position: absolute;
-	top: 25vh;
-	left: 6vw;
-	font-size: 45px;
-}
-#list {
-	position: absolute;
-	top: 30vh;
-	left: 5vw;
-	width: 86vw;
-	font-size: 80px;
-	border: solid 2px grey;
-	padding: 2vw 2vw 0vw 2vw;
-}
-
-.oddLine {
-	padding-left: 2vw;
-	background-color: #f2d5d3;
-	margin-bottom: 1vh;
-}
-.evenLine {
-	padding-left: 2vw;
-	background-color: #e0e0e0;
-	margin-bottom: 1vh;
-}
-
-#msgWhileNoVisitor {
-	position: absolute;
-	top: 20vh;
-	font-size: 70px;
 	width: 100vw;
-	text-align: center;
+	height: 3vh;
 }
 
 #title {
-	font-size: 120px;
-	color: white;
-	height: 100vh;
+	position: absolute;
 	width: 100vw;
-	text-align: center;
-	margin-top: 2.5vh;
+	height: 13vh;
+	border-radius: 1rem;
 }
 
-#bottomBorder {
-	position: fixed;
-	width: 100vw;
-	height: 15vh;
-	background-color: red;
-	margin-top: 85vh;
+#searchForm {
+	position: relative;
+	width: 90vw;
+	top: 17vh;
+	left: 5vw;
+}
+#searchForm>input {
+	width: 70%;
+}
+#searchForm>button {
+	width: 25%;
+}
+
+#visitorListSection {
+	position: relative;
+	width: 90vw;
+	top: 25vh;
+	left: 5vw;
+}
+#selectTip {
+	margin-bottom: 2vh;
+}
+
+#visitorListDiv {
+	border: solid 1px red;
+	border-radius: 1rem;
+	margin-bottom: 1vh;
+}
+
+#visitorListDiv:active {
+	background-color: hsl(348, 100%, 61%);
 }

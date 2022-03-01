@@ -1,54 +1,103 @@
-<% if(true){ %>
-<body>
-	<div id="deactiveCart">
-		<div id="name"><%= name %></div>
-		<div id="size"><%= size %></div>
-	</div>
-	<div id="title">(주)충북제일종합주방</div>
-	<div id="box">
-		<div id="upCircle"></div>
-		<div id="downCircle"></div>
-		<div id="price"><%= price %></div>
-		<div id="registered_date"><%= registered_date %></div>
-	</div>
-	<div id="cartArrow"></div>
-	<div id="cartImg">
-		<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24"><path fill="red" d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
-	</div>
-	<div id="activeCart">
-		<div id="cookie"> 
-			<% if(customerId === null){ %>
-				<div id="noCookie">
-					<form id="noCookieForm" action="http://localhost:5000/customer/cart" onsubmit="return checkQuantity()" method="post">
-						<input id="mobilePlace" type="text" name="createCustomerId" placeholder="전화번호 입력 " />
-						<input class="waitTilCustomerId" type="hidden" name="item_code" value="<%= item_code %>" />
-						<input class="waitTilCustomerId" type="hidden" name="account_id" value="<%= account_id %>" />
-						<input class="waitTilCustomerId" type="hidden" name="barcode" value="<%= barcode %>" />
-						<input class="waitTilCustomerId" id="quantityValue" type="hidden" name="quantity" value="0" />
-						<input class="waitTilCustomerId" id="submit" type="submit" value="담기" />
-					</form>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+		<link rel="stylesheet" href="/css/pricetag.css">
+	</head>
+	<body>
+	<body class="has-navbar-fixed-top">
+		<nav class="navbar is-fixed-top">
+			<div id="" class="columns is-mobile m-0 mt-2 is-flex is-flex-direction-row-reverse">
+				<div class="column is-7 has-text-centered has-background-danger p-1">
+					<p class="has-text-white">(주)충북제일종합주방</p>
 				</div>
-			<% }else{ %>
-				<div id="yesCookie">어서오세요,<br><%= customerId %>님
-					<form id="yesCookieForm" action="http://localhost:5000/customer/cart" onsubmit="return checkQuantity()" method="post">
-						<input type="hidden" name="readCustomerId" value="<%= customerId %>" />
-						<input type="hidden" name="item_code" value="<%= item_code %>" />
-						<input type="hidden" name="account_id" value="<%= account_id %>" />
-						<input type="hidden" name="barcode" value="<%= barcode %>" />
-						<input id="quantityValue" type="hidden" name="quantity" value="0" />
-						<input id="submit" type="submit" value="담기" />
-					</form>
+			</div>
+		</nav>
+		<section class="">
+			<div id="" class="columns has-text-grey-dark is-size-5 is-mobile m-0 ml-4 mt-6">
+				<div id="name" class="column is-10">품명 : <%= name %>
 				</div>
-			<% } %>
-		</div>
-		<div class="waitTilCustomerId" id="quantityIndicator"><span id="quantityShow"></span>개</div>
-		<div class="waitTilCustomerId" id="upBtn"></div>
-		<div class="waitTilCustomerId" id="downBtn"></div>
-		<div id="checkCustomerId">확인</div>
-	</div>
-	<div id="bottomSpace"></div>
+			</div>
+			<div id="" class="columns has-text-grey-dark is-size-5 is-mobile m-0 ml-4">
+				<div id="size" class="column is-10">규격 : <%= size %>
+				</div>
+			</div>
+		</section>
 
-</body>
-<% } %>
+		<section class="mt-4">
+			<div id="card" class="card has-background-danger-dark">
+				<span id="registered_date"><%= registered_date %></span>
+				<div id="upCircle" class=""></div>
+				<div class="card-header-title is-centered py-6">
+					<p id="price" class="title has-text-white"><%= price %></p>
+				</div>
+				<div id="downCircle"></div>
+			</div>
+		</section>
+		
+		<section id="guideSymbol" class="content">
+			<div id="cartImg">
+				<svg xmlns="http://www.w3.org/2000/svg" width="5rem" height="5rem" viewBox="0 0 24 24"><path fill="hsl(348, 100%, 61%)" d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
+			</div>
+			<div id="cartArrow"></div>
+		</section>
+
+		<section id="formBothCase" class="content">
+			<% if(customerId === null){ %>
+				<form id="mainForm" action="http://localhost:5000/customer/cart" onsubmit="return checkQuantity()" method="post">
+					<p class="control has-icons-left" id="mobilePlace_">
+						<input id="mobilePlace" class="input is-hovered" type="text" name="createCustomerId" placeholder="전화번호" />
+						<span class="icon is-small is-left">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+						</span>
+					</p>
+					<input class="waitTilCustomerId" type="hidden" name="item_code" value="<%= item_code %>" />
+					<input class="waitTilCustomerId" type="hidden" name="account_id" value="<%= account_id %>" />
+					<input class="waitTilCustomerId" type="hidden" name="barcode" value="<%= barcode %>" />
+					<input class="waitTilCustomerId" id="quantityValue" type="hidden" name="quantity" value="0" />
+				</form>
+			<% }else{ %>
+				<form id="mainForm" action="http://localhost:5000/customer/cart" onsubmit="return checkQuantity()" method="post">
+					<span id="mobilePlace_"></span>
+					<input type="hidden" name="readCustomerId" value="<%= customerId %>" />
+					<input type="hidden" name="item_code" value="<%= item_code %>" />
+					<input type="hidden" name="account_id" value="<%= account_id %>" />
+					<input type="hidden" name="barcode" value="<%= barcode %>" />
+					<input id="quantityValue" type="hidden" name="quantity" value="0" />
+				</form>
+			<% } %>
+		</section>
+		<section id="controller" class="">
+			<span class="waitTilCustomerId" id="upBtn">
+				<button class="button is-danger is-outlined">
+					<i class="fa fa-angle-up" aria-hidden="true"></i>
+				</button>
+			</span>
+			<span class="waitTilCustomerId" id="power_upBtn">
+				<button class="button is-danger is-outlined">
+					<i class="fa fa-angle-double-up fa-3x" aria-hidden="true"></i>
+				</button>
+			</span>
+			<span class="title waitTilCustomerId" id="quantityIndicator"></span>
+			<span class="waitTilCustomerId" id="downBtn">
+				<button class="button is-danger is-outlined">
+					<i class="fa fa-angle-down fa-6x" aria-hidden="true"></i>
+				</button>
+			</span>
+			<span class="waitTilCustomerId" id="power_downBtn">
+				<button class="button is-danger is-outlined">
+					<i class="fa fa-angle-double-down fa-3x" aria-hidden="true"></i>
+				</button>
+			</span>
+
+			<button class="button is-success is-large waitTilCustomerId" id="submitBtn"><strong>담 기</strong></button>
+		</section>
+		<div id="bottomSpace"></div>
+
+	</body>
+</html>
+
 <script type="text/javascript" src="/js/pricetag.js"></script>
-<link rel="stylesheet" href="/css/pricetag.css">
+<script src="https://kit.fontawesome.com/7a1ab13579.js" crossorigin="anonymous"></script>
+

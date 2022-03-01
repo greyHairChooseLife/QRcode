@@ -1,27 +1,31 @@
-<% if(visitorList.length > 0){ %>
-	<div id="search">
-		<form id="searchForm" action="http://localhost:5000/clerk/visitor" method="post">
-			<input id="textBox" type="text" name="customerId" placeholder="전화번호" />
-			<input type="submit" value="search" />
-			<div id="searchTip">전화번호를 정확히 입력하세요.</div>
-		</form>
-	</div>
-	<div id="selectTip">아니면, 선택하세요.</div>
-	<div id="list">
-		<% for(var i=0; i<visitorList.length; i++){ %>
-			<% if(i%2 !== 1){ %>
-				<div class="oddLine list"><%= visitorList[i].mobile %></div>
-			<% }else{ %>
-				<div class="evenLine list"><%= visitorList[i].mobile %></div>
-			<% } %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+		<link rel="stylesheet" href="/css/getVisitorList.css">
+	</head>
+	<body class="">
+		<div id="title1" class="column has-background-danger has-text-centered is-size-3 has-text-white py-4"></div>
+		<div id="title" class="column has-background-danger has-text-centered is-size-3 has-text-white py-4">방문 손님 목록</div>
+		<% if(visitorList.length > 0){ %>
+			<form id="searchForm" action="http://localhost:5000/clerk/visitor" method="post">
+				<input class="input is-danger" id="customerIdInput" type="text" name="customerId" placeholder="전화번호" />
+				<button class="button is-danger" type="submit">search</button>
+				<div id="searchTip">전화번호를 정확히 입력하세요.</div>
+			</form>
+			<section id="visitorListSection" class="">
+				<div id="selectTip">아니면, 선택하세요.</div>
+				<% for(var i=0; i<visitorList.length; i++){ %>
+					<div id="visitorListDiv" class="">
+						<div class="visitorList column has-text-danger-dark"><%= visitorList[i].mobile %></div>
+					</div>
+				<% } %>
+			</section>
+		<% }else{ %>
+			<div id="msgWhileNoVisitor">방문 고객이 없습니다.</div>
 		<% } %>
-	</div>
-<% }else{ %>
-	<div id="msgWhileNoVisitor">방문 고객이 없습니다.</div>
-<% } %>
-<div id="bottomBorder">
-	<div id="title">방문 손님 목록</div>
-</div>
+	</body>
+</html>
 
 <script type="text/javascript" src="/js/getVisitorList.js"></script>
-<link rel="stylesheet" href="/css/getVisitorList.css">
