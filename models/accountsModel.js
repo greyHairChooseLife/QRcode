@@ -6,7 +6,7 @@ const db = require('../config/db.js').promise();
 //}
 
 const read_all_accounts = async () => {
-	const [result] = await db.query(`SELECT id, name, registered_date FROM accounts`);
+	const [result] = await db.query(`SELECT name, registered_date, contact, address, note FROM accounts`);
 
 	//result[0] return undefined when there is no data with those conditions
 	if(result == undefined){
@@ -16,8 +16,9 @@ const read_all_accounts = async () => {
 	}
 }
 
-const create_account = (name) => {
-	db.query(`INSERT INTO accounts (name, registered_date) VALUES(?, now())`, [name]);
+const create_account = (data) => {
+	const { name, address, contact, note } = data;
+	db.query(`INSERT INTO accounts (name, registered_date, address, contact, note) VALUES(?, now(), ?, ?, ?)`, [name, address, contact, note]);
 	return
 }
 

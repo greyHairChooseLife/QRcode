@@ -7,7 +7,7 @@ const read_all_accounts = async (req, res) => {
 }
 
 const create_account = (req, res) => {
-	const result = accountsModel.create_account(req.body.name);
+	const result = accountsModel.create_account(req.body.data);
 
 	return res.json(result);
 }
