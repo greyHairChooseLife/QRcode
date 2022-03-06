@@ -36,10 +36,25 @@ const print_qrcode = (req, res) => {
 	return res.render('printQRcode', obj);
 }
 
+const loadMarginRatio = async (req, res) => {
+	const { target } = req.body;
+	const result = await accountsModel.loadMarginRatio(target);
+
+	return res.json(result);
+}
+const saveMarginRatio = (req, res) => {
+	const { target, value } = req.body;
+	const result = accountsModel.saveMarginRatio(target, value);
+
+	return res.json(result);
+}
+
 module.exports = {
 	create_account,
 	read_all_accounts,
 	update_account,
 	delete_account,
 	print_qrcode,
+	loadMarginRatio,
+	saveMarginRatio,
 }

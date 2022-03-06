@@ -1,7 +1,8 @@
 const db = require('../config/db.js').promise();
 
 const readItem = async (account_id, item_code) => {
-	const [result] = await db.query(`SELECT name, registered_date, purchase_cost, size, barcode FROM items WHERE account_id=? AND item_code=?`, [account_id, item_code]);
+	const [result] = await db.query(`SELECT items.name, items.registered_date, items.purchase_cost, items.size, items.barcode, accounts.margin_ratio FROM items JOIN accounts ON items.account_id=accounts.id WHERE account_id=? AND item_code=?`, [account_id, item_code]);
+	console.log('modelll: ', result);
 	if(result == undefined){
 		return null;
 	}else{
@@ -43,6 +44,10 @@ const deleteCart = async (customerId, barcode) => {
 
 const checkMyCart = async (customerId) => {
 	const [result] = await db.query(`SELECT items.name, items.size, items.purchase_cost , items.barcode, cb.quantity FROM items JOIN customerBasket AS cb ON items.item_code=cb.item_code AND items.account_id=cb.account_id WHERE mobile=${customerId} AND created_date >= date_add(NOW(), interval -12 hour)`);		//현재시간 ~ 12시간 전 까지만 불러오면 아침 9시든 저녁9시든 전날과 겹치지 않으면서 당일 장바구니에 담은 것은 모두 검색된다.
+	for(var i=0; i<result.length; i++){
+		result[i].margin_ratio = await db.query(`SELECT accounts.margin_ratio FROM accounts JOIN customerBasket ON accounts.id=customerBasket.account_id WHERE mobile=${customerId}`);
+		result[i].margin_ratio = result[i].margin_ratio[0][0].margin_ratio;
+	}
 	if(result == undefined){
 		return null;
 	}else{

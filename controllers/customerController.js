@@ -8,8 +8,8 @@ const readItem = async (req, res) => {
 
 	obj.item_code = item_code;
 	obj.account_id = account_id;
-	obj.price = obj.purchase_cost * 1.3;	//make profit
-	const priceString = obj.price.toString().split('');		//FROM integer number TO price type
+	obj.price = obj.purchase_cost * obj.margin_ratio + obj.purchase_cost;	//make profit
+	const priceString = obj.price.toString().split('');		//3자리마다 쉼표 박기
 	let count = 0;
 	for(var i=priceString.length -1; i>0; i--){
 		if(++count%3 === 0){
@@ -65,8 +65,24 @@ const putIntoCart = (req, res) => {
 const checkMyCart = async (req, res) => {
 	const customerId = req.params.customerId;
 	const result = await customerModel.checkMyCart(customerId);
+	let priceString = '';
+	let temp;
 	for(var i=0; i<result.length; i++){				//판매가격 만들고 매입비용 데이터는 삭제
-		result[i].price = result[i].purchase_cost * 0.3;
+		result[i].price = result[i].purchase_cost * result[i].margin_ratio + result[i].purchase_cost;
+
+		priceString = result[i].price.toString().split('');		//3자리마다 쉼표 박기
+		let count = 0;
+		for(var j=priceString.length -1; j>0; j--){
+			if(++count%3 === 0){
+				priceString.splice(j, 0, ',');
+			}
+		}
+		temp = '';
+		for(var j=0; j<priceString.length; j++){
+			temp += priceString[j];
+		}
+		result[i].price = temp;
+
 		delete result[i].purchase_cost;
 	}
 	let shortCustomerId = '';		//끝 4자리만 나오게

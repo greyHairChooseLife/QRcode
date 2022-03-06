@@ -32,6 +32,17 @@ const delete_account = (target) => {
 	return
 }
 
+const loadMarginRatio = async (target) => {
+	const [result] = await db.query(`SELECT margin_ratio FROM accounts WHERE id=${target}`);
+	return result;
+}
+
+const saveMarginRatio = async (target, value) => {
+	const [result] = await db.query(`UPDATE accounts SET margin_ratio=${value} WHERE id=${target}`);
+	console.log(result);
+	return result;
+}
+
 //const update_accounts = async (new_account_info, acc_id) => {
 //	const name = new_account_info.name;
 //	const number = new_account_info.number;
@@ -55,4 +66,6 @@ module.exports = {
 	read_all_accounts,	//read
 	update_account,		//update
 	delete_account,		//delete
+	loadMarginRatio,
+	saveMarginRatio,
 };
