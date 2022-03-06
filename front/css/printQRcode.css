@@ -1,0 +1,14 @@
+.each {
+	display: inline-block;
+	border: solid 1px black;
+	padding: 1vw;
+
+}
+
+.each>div {
+	display: inline-block;
+	font-size: 1.5rem;
+}
+.each>div:nth-child(2) {
+	margin-left: 0.5rem;
+}

@@ -6,7 +6,7 @@ const db = require('../config/db.js').promise();
 //}
 
 const read_all_items = async () => {
-	const [result] = await db.query(`SELECT name, registered_date, purchase_cost, size, barcode FROM items`);
+	const [result] = await db.query(`SELECT items.name as itemName, items.registered_date, items.purchase_cost, items.size, items.barcode, accounts.name as accountName FROM items LEFT JOIN accounts ON items.account_id = accounts.id`);
 	if(result == undefined){
 		return null;
 	}else{

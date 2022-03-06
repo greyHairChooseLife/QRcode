@@ -26,9 +26,20 @@ const delete_account = (req, res) => {
 	return res.json(result);
 }
 
+const print_qrcode = (req, res) => {
+	const src = req.body;
+	const obj = {
+		obj: JSON.parse(src.src),
+	}
+
+
+	return res.render('printQRcode', obj);
+}
+
 module.exports = {
 	create_account,
 	read_all_accounts,
 	update_account,
 	delete_account,
+	print_qrcode,
 }
