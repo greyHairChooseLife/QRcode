@@ -3,7 +3,7 @@ window.addEventListener("load", () => {
 		let target = obj[i].target;
 		let item_code = obj[i].item_code;
 		let barcode = obj[i].barcode;
-		let qr_url = `http://localhost:5000/readItem/${target}/${item_code}`;
+		let qr_url = `http://54.180.86.49:5000/readItem/${target}/${item_code}`;
 	
 		new QRCode(document.getElementById(`qrcode_${i}`), {
 			text: qr_url,

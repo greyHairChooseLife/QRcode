@@ -18,6 +18,9 @@ app.use('/accounts', accountsRouter);
 app.use('/items', itemsRouter);
 app.use('/customer', customerRouter);
 app.use('/clerk', clerkRouter);
+app.get('/', (req, res) => {
+	res.send('ok');
+})
 
 const port = 5000;
 app.listen(port, () => console.log(`connection success with ${port}`));

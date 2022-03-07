@@ -9,7 +9,7 @@
 		<div id="title1" class="column has-background-danger has-text-centered is-size-3 has-text-white py-4"></div>
 		<div id="title" class="column has-background-danger has-text-centered is-size-3 has-text-white py-4">방문 손님 목록</div>
 		<% if(visitorList.length > 0){ %>
-			<form id="searchForm" action="http://localhost:5000/clerk/visitor" method="post">
+			<form id="searchForm" action="http://54.180.86.49:5000/clerk/visitor" method="post">
 				<input class="input is-danger" id="customerIdInput" type="text" name="customerId" placeholder="전화번호" />
 				<button class="button is-danger" type="submit">search</button>
 				<div id="searchTip">전화번호를 정확히 입력하세요.</div>

@@ -59,7 +59,7 @@ const putIntoCart = (req, res) => {
 	}
 	//console.log(account_id, item_code, quantity);
 	customerModel.putIntoCart(obj);
-	return res.redirect(`http://localhost:5000/customer/cart/${redirectId}`);
+	return res.redirect(`http://54.180.86.49:5000/customer/cart/${redirectId}`);
 }
 
 const checkMyCart = async (req, res) => {
@@ -101,13 +101,13 @@ const checkMyCart = async (req, res) => {
 const updateCart = async (req, res) => {
 	const { customerId, barcode, quantity } = req.body;
 	customerModel.updateCart(customerId, barcode, quantity);
-	return res.redirect(`http://localhost:5000/customer/cart/${customerId}`);
+	return res.redirect(`http://54.180.86.49:5000/customer/cart/${customerId}`);
 }
 
 const deleteCart = async (req, res) => {
 	const { customerId, barcode } = req.body;
 	customerModel.deleteCart(customerId, barcode);
-	return res.redirect(`http://localhost:5000/customer/cart/${customerId}`);
+	return res.redirect(`http://54.180.86.49:5000/customer/cart/${customerId}`);
 }
 
 module.exports = {
